@@ -1,0 +1,31 @@
+.autocomplete-container{
+  text-align: center;
+}
+
+.search-input{
+  width: 500px;
+}
+
+.recipes-container{
+
+}
+
+.recipes{
+  width: 505px;
+  margin: auto;
+  border: 1px solid black;
+  border-top: none;
+  text-align: left;
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+.recipe {
+  width: 494px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.recipe:hover {
+  background-color: beige
+}
