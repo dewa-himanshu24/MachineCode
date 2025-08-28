@@ -1,0 +1,22 @@
+.container{
+  text-align: center;
+}
+
+.progress-container {
+  width: 60vw;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.progress-outer{
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-inner {
+  border-radius: 10px;
+  text-align: end;
+  padding-right: 5px;
+  transition: transform 0.5s ease-in;
+}
