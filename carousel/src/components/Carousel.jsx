@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import './Carousel.css';
 
 const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, autoPlayInterval, enableAutoPlay, className}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -7,6 +8,7 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
   const carouselRef = useRef(null);
   const slideRefs = useRef([]);
   const autoPlayRef = useRef(null);
+  const announcementRef = useRef(null)
 
   const totalSlides = slides.length;
 
@@ -14,7 +16,14 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
     if (externalCurrentSlide !== undefined && externalCurrentSlide !== currentSlide) {
       goToSlide(externalCurrentSlide)
     }
-  }, [externalCurrentSlide])
+  }, [externalCurrentSlide]);
+
+  // Announce slide changes for screen readers
+  const announceSlide = useCallback((index) => {
+    if (announcementRef.current) {
+      announcementRef.current.textContent = `Slide ${index + 1} of ${totalSlides}`;
+    }
+  }, [totalSlides]);
 
   const goToSlide = useCallback((idx) => {
     let newIdx = ((idx % totalSlides) + totalSlides) % totalSlides;
@@ -29,8 +38,9 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
     }
 
     onSlideChange(newIdx);
+    announceSlide(newIdx)
 
-  }, [totalSlides, onSlideChange])
+  }, [totalSlides, announceSlide, onSlideChange]);
 
   const prevSlide = useCallback(() => {
     goToSlide(currentSlide - 1);
@@ -47,11 +57,12 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
 
     return () => {
       if (autoPlayRef.current) {
-        clearInterval(autoPlayRef);
+        clearInterval(autoPlayRef.current);
       }
     };
   }, [isAutoPlaying, totalSlides, nextSlide, autoPlayInterval]);
 
+  // IntersectionObserver
   useEffect(() => {
 
     const options = {
@@ -61,7 +72,6 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
     }
 
     let obeserver = new IntersectionObserver((entries) => {
-      console.log('~ entries', entries);
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           let index = slideRefs.current.indexOf(entry.target);
@@ -69,6 +79,7 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
           if (index !== -1 && index !== currentSlide) {
             setCurrentSlide(index);
             onSlideChange(index);
+            announceSlide(index);
           }
         }
       })
@@ -79,7 +90,7 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
     })
 
     return () => obeserver.disconnect();
-  }, [currentSlide, onSlideChange]);
+  }, [currentSlide, announceSlide, onSlideChange]);
 
   // Keyboard navigation
   const handleKeyDown = (e) => {
@@ -90,12 +101,21 @@ const Carousel = ({slides, currentSlide: externalCurrentSlide ,onSlideChange, au
     }
   };
 
+  // No Slides
   if (!slides.length) {
     return <div className="no-slides">No slides available</div>;
   }
 
   return (
     <div className={`carousel-wrapper ${className}`} onKeyDown={handleKeyDown}>
+
+      {/* Announcement */}
+      <div
+        ref={announcementRef}
+        style={{ position: "fixed", bottom: "10px", left: "10px", background: "yellow", padding: "5px" }}
+        aria-live="polite"
+        aria-atomic="true"
+      />
 
       {/* Carousel container */}
       <div className='carousel-container'>

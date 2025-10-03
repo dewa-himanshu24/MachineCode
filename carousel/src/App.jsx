@@ -45,7 +45,7 @@ function App() {
         <Carousel
           slides={demoSlides}
           autoPlayInterval={3000}
-          enableAutoPlay={false}
+          enableAutoPlay={true}
           currentSlide={controlSlide}
           onSlideChange={(idx) =>  setControlSlide(idx)}
         />

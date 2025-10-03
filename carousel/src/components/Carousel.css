@@ -1,0 +1,88 @@
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.carousel-container:hover .carousel-btn, 
+.carousel-container:hover .carousel-autoplay-btn 
+{
+  opacity: 1;
+}
+
+.carousel-slides {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  scroll-snap-align: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  border: none;
+  padding: 12px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+
+}
+
+.carousel-btn-prev {
+  left: 16px;
+}
+.carousel-btn-next {
+  right: 16px;
+}
+
+.carousel-autoplay-btn {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  border-radius: 50%;
+  border: none;
+  padding: 10px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.carousel-indicator {
+  width: 20px;
+  height: 15px;
+  border: none;
+  background-color: #9e9e9e7a;
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background-color: #06b6d4;
+}
+.carousel-indicator:hover {
+  transform: scale(1.2);
+}
