@@ -1,0 +1,40 @@
+.navbar-wrapper {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+}
+
+.navbar-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 5px 25px;
+  gap: 20px;
+  background-color: #2d7df7;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px #ddd, 0 4px 6px -2px #ddd;
+}
+
+.navbar-menu {
+  gap: 20px;
+}
+
+.navbar-menu button {
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.dropdown-wrapper {
+  position: absolute;
+  top: 50px;
+  background-color: white;
+  padding: 10px;
+  list-style: none;
+  box-shadow: 0 10px 15px -3px #ddd, 0 4px 6px -2px #ddd;
+  color: black;
+}
