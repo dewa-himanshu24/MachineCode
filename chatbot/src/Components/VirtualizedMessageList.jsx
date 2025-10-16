@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Message from './Message';
 
 // Virtualized List Component for handling 100s of messages
 const VirtualizedMessageList = ({ messages, containerRef, onRetry }) => {
