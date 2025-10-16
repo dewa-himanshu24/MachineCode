@@ -1,65 +1,114 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .nav-wrapper {
   width: 100%;
+  background-color: #fff;
+  font-family: sans-serif;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
-  height: 50px;
-  padding: 10px 25px;
-  gap: 15px;
-  box-shadow: 0 10px 15px -3px #ddd;
+  gap: 25px;
+  height: 60px;
+  padding: 0 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  color: #000;
 }
 
 .nav-submenu {
   position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-submenu a,
+.nav-trigger {
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.nav-submenu:hover a,
+.nav-submenu:hover .nav-trigger {
+  color: #2d7df7;
 }
 
 .nav-dropdown-wrapper {
   position: absolute;
-      box-shadow: 0px 10px 15px -3px #ddd;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    display: none;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 15px;
+  display: none;
+  z-index: 100;
+}
+
+.nav-dropdown-wrapper.show {
+  display: block;
 }
 
 .nav-dropdown-container {
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-dropdown-container.single-column{
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.nav-dropdown-container.two-column {
+  display: flex;
+  flex-direction: row;
+  max-width: 500px;
 }
 
 .nav-dropdown-submenu {
-  width: 100%;
   white-space: nowrap;
 }
-.nav-submenu button {
-  border: none;
-  background-color: transparent;
-  font-size: inherit;
-  cursor: pointer;
-}
-.nav-submenu a {
-  text-decoration: none;
-  font-size: inherit;
-  cursor: pointer;
-}
-.nav-dropdown-submenu .nav-submenu-title {
+
+.nav-submenu-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
   text-decoration: underline;
-  margin-bottom: 5px;
-}
-.nav-dropdown-submenu li{
-  list-style: none;
-}
-.show {
-  display: block;
 }
 
-.nav-submenu:hover {
+.nav-dropdown-submenu ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-dropdown-submenu li {
+  margin-bottom: 5px;
+}
+
+.nav-dropdown-submenu a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.nav-dropdown-submenu a:hover {
   color: #2d7df7;
+}
+
+/* Accessibility focus style */
+.nav-trigger:focus,
+.nav-dropdown-submenu a:focus {
+  outline: 2px solid #2d7df7;
+  outline-offset: 2px;
 }

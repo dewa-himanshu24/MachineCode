@@ -1,17 +1,17 @@
 import React from 'react';
-import { menuItemsData } from '../demoSlide';
 import SubMenu from './SubMenu';
+import { menuItemsData } from '../demoSlide';
 
 const NavigationBar = () => {
   return (
-    <div className="nav-wrapper">
+    <nav className="nav-wrapper">
       <div className="nav-container">
-        {menuItemsData?.map((menu, idx) => (
+        {menuItemsData.map((menu, idx) => (
           <SubMenu key={idx} menuItems={menu} />
         ))}
       </div>
-    </div>
-  )
-}
+    </nav>
+  );
+};
 
-export default NavigationBar
+export default NavigationBar;
