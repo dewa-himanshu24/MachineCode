@@ -1,4 +1,4 @@
-const demoSlides = [
+export const demoSlides = [
   <div className="slide slide1" key="slide1">
     <div className="slide-content">
       <h2>Slide 1</h2>
@@ -26,4 +26,53 @@ const demoSlides = [
   </div>,
 ];
 
-export default demoSlides;
+export const menuItemsData = [
+  {
+    title: 'Home',
+  },
+  {
+    title: 'Tutorials',
+    subMenu: [
+      {
+        title: 'HTML',
+        items: ['Shematic', 'Anchor', 'bold']
+      },
+      {
+        title: 'JS Framework',
+        items: ['Closure', 'Hoisting', 'Event Loop'],
+        subMenu: [
+          {
+            title: 'Angular',
+          },
+          {
+            title: 'React',
+            subMenu: [
+              {
+                title: 'React.js',
+              },
+              {
+                title: 'React Material UI',
+              },
+            ]
+          },
+        ]
+      },
+      {
+        title: 'CSS',
+        items: ['Flex', 'Grid'],
+      },
+    ]
+  },
+  {
+    title: 'Services',
+    subMenu: [
+      {
+        title: 'Create a Website',
+      },
+      {
+        title: 'Contact Us',
+        items: ['Call', 'Message'],
+      },
+    ]
+  },
+]
