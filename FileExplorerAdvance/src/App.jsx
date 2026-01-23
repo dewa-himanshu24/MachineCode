@@ -4,6 +4,7 @@ import FileExplorer from './component/FileExplorer/FileExplorer';
 import fileExplorerData from './data/fileExplorer';
 import useTraverseTree from './hooks/useTraverseTree';
 
+import ProductList from './component/ProductList/productList';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         handleDeleteNode={handleDeleteNode}
         handleRenameNode={handleRenameNode}
       />
+      <ProductList />
     </>
   )
 }
