@@ -5,20 +5,17 @@ function useFetchProduct(page) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const limit = 10;
 
-  async function getProducts() {
+  async function getProducts(page, signal) {
 
     try {
       setLoading(true);
+      const limit = 10;
       const skip = (page - 1) * limit;
-      const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
+      const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`, signal);
       const jsonResponse = await response.json();
-            console.log('~jsonResponse', jsonResponse);
-
 
       const productData = jsonResponse?.products;
-      console.log('~productData', productData);
 
       setProducts((prev) => {
         const updatedProduct = [...prev, ...productData];
@@ -30,7 +27,6 @@ function useFetchProduct(page) {
         return updatedProduct;
       })
 
-
     } catch (err) {
       console.log('Failed to fetch product');
     } finally {
@@ -39,8 +35,13 @@ function useFetchProduct(page) {
   }
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+    getProducts(page, signal);
 
-    getProducts(page);
+    return () => {
+      controller.abort();
+    }
   }, [page]);
 
   return {

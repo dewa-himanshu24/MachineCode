@@ -8,7 +8,6 @@ function ProductList({ }) {
   const observer = useRef();
 
   const lastElementRef = useCallback((node) => {
-    console.log('~node', node);
     if (loading) return;
     if (observer.current) observer.current.disconnect();
 
