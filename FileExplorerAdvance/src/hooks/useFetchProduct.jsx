@@ -28,7 +28,11 @@ function useFetchProduct(page) {
       })
 
     } catch (err) {
-      console.log('Failed to fetch product');
+      if (e.name === 'AbortError') {
+        console.log('Fetch aborted successfully');
+      } else {
+        console.log('Failed to fetch product', e);
+      }
     } finally {
       setLoading(false);
     }
