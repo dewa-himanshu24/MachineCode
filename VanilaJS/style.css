@@ -1,0 +1,23 @@
+/* style.css */
+body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+.container { max-width: 800px; margin: 0 auto; }
+.controls { display: flex; gap: 10px; margin-bottom: 20px; }
+input, select { padding: 10px; flex: 1; border: 1px solid #ccc; border-radius: 4px; }
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.movie-card:hover { transform: translateY(-5px); }
+.movie-card h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+.movie-card span { color: #666; font-size: 0.9rem; }
