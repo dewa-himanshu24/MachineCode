@@ -21,3 +21,19 @@ input, select { padding: 10px; flex: 1; border: 1px solid #ccc; border-radius: 4
 .movie-card:hover { transform: translateY(-5px); }
 .movie-card h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
 .movie-card span { color: #666; font-size: 0.9rem; }
+
+
+#checkbox-container ul {
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#checkbox-container li {
+  margin-bottom: 5px;
+}
+
+label {
+  margin-left: 8px;
+  cursor: pointer;
+}
