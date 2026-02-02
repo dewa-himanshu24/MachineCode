@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanilla JS Movie Search</title>
   <link rel="stylesheet" href="movie.css">
+  <link rel="stylesheet" href="toast.css">
 </head>
 <body>
   <div id="container">
@@ -24,7 +25,6 @@
     <div id="movie-list" class="movie-grid"></div>
 
     <div id="checkbox-container"></div>
-
 
     <div class="carousel">
       <div class="carousel-track-container">
@@ -49,8 +49,11 @@
         <button class="indicator"></button>
       </div>
     </div>
+
+    <button id="notification-button">Show Notification</button>
   </div>
 
+  <script src="ToastManager.js"></script>
   <script src="movie.js"></script>
   <script src="checkbox.js"></script>
   <script src="carousal.js"></script>
