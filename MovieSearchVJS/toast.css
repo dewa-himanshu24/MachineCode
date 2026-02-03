@@ -1,4 +1,4 @@
-.toast-container {
+/* .toast-container {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -9,7 +9,6 @@
 }
 
 .toast {
-  /* background: #fff; */
   background: grey;
   min-width: 200px;
   display: flex;
@@ -47,5 +46,87 @@
   border: none;
   font-size: 15px;
   cursor: pointer;
+} */
+
+/* Container positioning */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  pointer-events: none; /* Allows clicking things behind the gap */
+}
+
+/* Base Toast Styling */
+.toast {
+  pointer-events: auto; /* Re-enable clicks for the toast itself */
+  min-width: 280px;
+  max-width: 400px;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
+  color: #1f2937;
+  
+  /* Entry Animation */
+  animation: toast-enter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Exit Animation triggered by JS class */
+.toast-exit {
+  animation: toast-exit 0.3s ease-in forwards;
+}
+
+/* Toast Types */
+.toast-success { border-left: 5px solid #10b981; background: #ecfdf5; }
+.toast-info { border-left: 5px solid #3b82f6; background: #eff6ff; }
+.toast-warning { border-left: 5px solid #f59e0b; background: #fffbeb; }
+.toast-error { border-left: 5px solid #ef4444; background: #fef2f2; }
+
+/* Remove Button */
+.toast-remove {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #9ca3af;
+  margin-left: 12px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.toast-remove:hover {
+  color: #374151;
+}
+
+/* Keyframes */
+@keyframes toast-enter {
+  from {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-exit {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+    margin-top: -60px; /* Slides other toasts up smoothly */
+  }
 }
 
