@@ -27,8 +27,6 @@ async function fetchMovies() {
 
     movies = await response.json();
 
-    console.log('~movies', movies);
-
     renderMovie(movies);
     populateGenre(movies);
 
