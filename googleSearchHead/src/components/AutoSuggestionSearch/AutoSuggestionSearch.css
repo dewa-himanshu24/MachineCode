@@ -1,0 +1,14 @@
+.container {
+  width: 600px;
+    margin: 0 auto;
+}
+
+.active {
+  background-color: aquamarine;
+}
+
+.container > ul {
+       list-style: none;
+    padding: 0;
+    margin: 0;
+}
