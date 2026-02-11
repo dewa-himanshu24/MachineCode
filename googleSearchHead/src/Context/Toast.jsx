@@ -1,5 +1,6 @@
 import { useEffect, useContext, memo } from "react";
 import { ToastContext } from "./ToastProvider";
+import './Toast.css';
 
 const Toast =  memo(({ id, message, type, duration }) => {
   const { removeToast } = useContext(ToastContext);
